@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" class="mdui-theme-dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+
+    Midnight-午夜
+
+  </title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/mdui@2.0.3/mdui.css" />
+  
+
+  <style>
+    @font-face {
+      font-family: "Font";
+      src: url("./sarasa-ui-sc-light.ttf");
+
+      font-family: "Font-bold";
+      src: url("./sarasa-ui-sc-bold.ttf");
+    }
+
+    html {
+      font-family: "Font", Segoe UI, Tahoma, Verdana, sans-serif;
+      -moz-user-select: none;
+      /* Firefox */
+      -webkit-user-select: none;
+      /* WebKit */
+      -ms-user-select: none;
+      /* IE */
+      -khtml-user-select: none;
+      /* KHTML */
+      -o-user-select: none;
+      /* Opera */
+      user-select: none;
+      /* CSS3 */
+    }
+
+    a:link {
+      color: inherit;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: inherit;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: inherit;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:active {
+      color: inherit;
+      background-color: transparent;
+      text-decoration: none;
+    }
+    
+    .title {
+      line-height: var(--mdui-typescale-display-small-line-height);
+      font-size: var(--mdui-typescale-display-small-size);
+      letter-spacing: var(--mdui-typescale-display-small-tracking);
+      font-weight: var(--mdui-typescale-display-small-weight);
+    }
+
+    .headline {
+      line-height: var(--mdui-typescale-headline-medium-line-height);
+      font-size: var(--mdui-typescale-headline-medium-size);
+      letter-spacing: var(--mdui-typescale-headline-medium-tracking);
+      font-weight: var(--mdui-typescale-headline-medium-weight);
+    }
+    
+  </style>
+
+</head>
+
+<body>
+
+  <div style="position: relative;overflow: auto; ">
+
+    
+    <!-- TOP app bar -->
+    <mdui-top-app-bar variant="medium" scroll-behavior="shrink elevate .example-scroll-behavior-shrink-elevate">
+      </mdui-navigation-drawer>
+      <div class="example-modal" style="position: relative; overflow: hidden">
+
+        <!-- Navigation drawer -->
+        <mdui-navigation-drawer modal close-on-esc close-on-overlay-click>
+
+          <mdui-list>
+            <mdui-list-item rounded icon="home" end-icon="arrow_right" href="home.html">
+
+              Home
+
+            </mdui-list-item>
+          </mdui-list>
+
+          <mdui-divider middle></mdui-divider>
+
+          <mdui-list>
+            <mdui-list-item rounded icon="draw" end-icon="arrow_right" href="piclogs.html">
+
+              Piclogs
+
+            </mdui-list-item>
+          </mdui-list>
+
+          <mdui-list>
+            <mdui-list-item rounded icon="collections_bookmark" end-icon="arrow_right" href="blogs.html">
+
+              Blogs
+
+            </mdui-list-item>
+          </mdui-list>
+
+          <mdui-list>
+            <mdui-list-item rounded icon="library_books" end-icon="arrow_right" href="changelogs.html">
+
+              Changelogs
+
+            </mdui-list-item>
+          </mdui-list>
+
+        </mdui-navigation-drawer>
+        <div style="height: 160px;">
+          <mdui-button-icon icon="menu" class="open"></mdui-button-icon>
+        </div>
+      </div>
+      <script>
+        const example = document.querySelector(".example-modal");
+        const navigationDrawer = example.querySelector("mdui-navigation-drawer");
+        const openButton = example.querySelector(".open");
+        const closeButton = example.querySelector(".close");
+        openButton.addEventListener("click", () => navigationDrawer.open = true);
+        closeButton.addEventListener("click", () => navigationDrawer.open = false);
+      </script>
+
+      <!-- Title -->
+      <mdui-top-app-bar-title style="font-family: Font-bold">
+
+        Midnight-午夜
+
+        <div style="flex-grow: 1"></div>
+      </mdui-top-app-bar-title><mdui-dropdown trigger="click" stay-open-on-click>
+        <mdui-button-icon icon="more_vert" slot="trigger"></mdui-button-icon>
+
+        <!-- Top app bar menu -->
+        <mdui-menu>
+          <mdui-menu-item>
+            <a href="changelog.html">
+
+              Github issues
+
+            </a>
+          </mdui-menu-item>
+        </mdui-menu>
+      </mdui-dropdown>
+      <mdui-navigation-drawer close-on-overlay-click class="drawer">
+    </mdui-top-app-bar>
+
+    <div class="example-scroll-behavior-shrink-elevate" style="height: 30px; overflow: auto">
+
+
+    </div>
+
+  </div>
+  <br>
+      
+  <mdui-layout>
+
+    <mdui-layout-item placement="left" class="example-layout-item" style="width: 10%"></mdui-layout-item>
+
+    <mdui-layout-item placement="right" class="example-layout-item" style="width: 10%"></mdui-layout-item>
+
+    <mdui-layout-main class="example-layout-main" style="min-height: 30px">
+      <div class="mdui-prose">
+
+        <!-- main -->
+
+        <h3 style="font-family: Font-bold;color: rgb(var(--mdui-color-primary))" class="title">
+          
+          欢迎
+        
+        </h3>
+
+        <h4 class="headline">
+
+          <mdui-avatar src="./chirico.jpg"></mdui-avatar> 
+          
+          ChiRicoSAMA的Blog感谢你的访问和关注！
+
+          <br><br>
+
+        </h4>
+
+        <h3 style="font-family: Font-bold;color: rgb(var(--mdui-color-primary))" class="title">
+          
+          博客
+        
+        </h3>
+
+        <h4 class="headline">
+
+          又新又好的 碎 碎 念 通过最新的Material You Design绝赞放送中
+          <br><br>
+
+        </h4>
+
+        <h3 style="font-family: Font-bold;color: rgb(var(--mdui-color-primary))" class="title">
+          
+          稿件存档
+        
+        </h3>
+        
+        <h4 class="headline">
+
+          <h style="text-decoration: line-through;color: rgb(var(--mdui-color-outline));">一般一般世界第三</h>的Krita使用者在服务器瞎jb存的，不求观赏，只求自嗨orz
+          <br><br>
+
+        </h4>
+
+
+        <h3 style="font-family: Font-bold;color: rgb(var(--mdui-color-primary))" class="title">
+          
+          更新日志
+        
+        </h3>
+        
+        <h4 class="headline">
+
+          小站新开三年，目前使用4EVERLAND托管网页，所有的更新和删减都在更新日志中，现在基于MDUI2.0项目有Material You（Material design 3）了！
+          <br><br>
+          如果你在使用本网站时遇到任何问题，可以向右上角的点击选中“Github issues”(未完成)或者向ChiRicoSAMA@DUCK.COM发邮件反馈，谢谢！
+          <br><br>
+
+        </h4>
+
+        <mdui-divider></mdui-divider>
+
+        <h3 style="font-family: Font-bold;color: rgb(var(--mdui-color-primary))" class="title">
+          
+          联系我
+        
+        </h3>
+        
+        <h4 class="headline">
+
+
+          <a href="https://twitter.com/ChiRicoSAMA">Twitter</a>　　　<a href="https://github.com/ChiricoSAMA">Github</a>　　　<a href="mailto:chiricosama@duck.com">E-mail</a>
+
+
+          <br><br>
+
+        </h4>
+
+      </div>
+    </mdui-layout-main>
+
+  </mdui-layout>
+</body>
+
+</html>
+<script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
