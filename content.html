@@ -133,12 +133,16 @@
 
       <!-- Title -->
       <mdui-top-app-bar-title>
-
-        Blogs博客
-
         <div style="flex-grow: 1"></div>
-      </mdui-top-app-bar-title><mdui-dropdown trigger="click" stay-open-on-click>
+      </mdui-top-app-bar-title>
+
+      <mdui-dropdown trigger="hover">
+        <mdui-button-icon slot="trigger" icon="more_vert"></mdui-button-icon>
+        <mdui-menu>
+          <mdui-menu-item><a href="https://github.com/ChiricoSAMA/Midnight/issues">Github issues</a></mdui-menu-item>
+        </mdui-menu>
       </mdui-dropdown>
+      
       <mdui-navigation-drawer close-on-overlay-click class="drawer">
     </mdui-top-app-bar>
 
