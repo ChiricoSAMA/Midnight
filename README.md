@@ -54,7 +54,7 @@
 <br>October 18
 <br>网站重写
 <br>网站改名为Midnight
-<br>设计基于MDUI1.0项目
+<br>设计基于zdhxiong的MDUI1.0项目
 <br>更新Material Design 2
 <br>增加侧边抽屉栏
 <br>增加浮动操作按钮
@@ -68,10 +68,11 @@
 <br>
 <br>December 16
 <br>网站重写
-<br>设计基于MDUI2.0项目
+<br>设计基于zdhxiong的MDUI2.0项目
 <br>更新Material You Design
 <br>增加顶栏小菜单
 <br>增加小菜单里的GitHub issues选项
+<br>使用了基于@imuncle的gitblog项目的issue blogs界面
 <br>移除浮动操作按钮
 <br>更改全局主题色为紫色
 <br>
