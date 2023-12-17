@@ -1,0 +1,25 @@
+{
+    "name": "ChiRico",
+    "repo": "Blog",
+    "client_id": "4148cca0f91e524d1a42",
+    "client_secret": "637c2c993cccf79c51a0a215f538932edfdcb9b0",
+    "title": "Blog博客",
+    "instruction": "求知若饥，虚心若愚",
+    "server_link": "http://midnight.4everland.app/gh-oauth-server.php",
+    "filter": {
+        "creator": "all",
+        "state": "open"
+    },
+    "menu": {
+        //"Home" : "./",
+        //"RSS" : "https://rsshub.app/github/issue/imuncle/imuncle.github.io",
+        //"About me" : "content.html?id=41"
+    },
+    "friends": {
+
+    },
+    "icons": {
+
+        //}
+    }
+}
