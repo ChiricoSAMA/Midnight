@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" class="mdui-theme-dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+
+    Blogs博客
+
+  </title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/mdui@2.0.3/mdui.css" />
+  <link rel="icon" href="favicon.ico">
+
+
+  <style>
+    @font-face {
+      font-family: "Font";
+      src: url("./sarasa-ui-sc-light.ttf");
+    }
+
+    html {
+      font-family: "Font", sans-serif, Segoe UI;
+      -moz-user-select: none;
+      /* Firefox */
+      -webkit-user-select: none;
+      /* WebKit */
+      -ms-user-select: none;
+      /* IE */
+      -khtml-user-select: none;
+      /* KHTML */
+      -o-user-select: none;
+      /* Opera */
+      user-select: none;
+      /* CSS3 */
+    }
+
+    a:link {
+      color: inherit;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: inherit;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: inherit;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:active {
+      color: inherit;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    .title {
+      line-height: var(--mdui-typescale-display-small-line-height);
+      font-size: var(--mdui-typescale-display-small-size);
+      letter-spacing: var(--mdui-typescale-display-small-tracking);
+      font-weight: var(--mdui-typescale-display-small-weight);
+    }
+
+    .headline {
+      line-height: var(--mdui-typescale-headline-medium-line-height);
+      font-size: var(--mdui-typescale-headline-medium-size);
+      letter-spacing: var(--mdui-typescale-headline-medium-tracking);
+      font-weight: var(--mdui-typescale-headline-medium-weight);
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div style="position: relative;overflow: auto; ">
+
+
+    <!-- TOP app bar -->
+    <mdui-top-app-bar variant="medium" scroll-behavior="shrink elevate .example-scroll-behavior-shrink-elevate">
+      </mdui-navigation-drawer>
+      <div class="example-modal" style="position: relative; overflow: hidden">
+
+        <!-- Navigation drawer -->
+        <mdui-navigation-drawer modal close-on-esc close-on-overlay-click>
+
+          <mdui-list>
+            <mdui-list-item rounded icon="home" end-icon="arrow_right" href="index.html">
+
+              Home
+
+            </mdui-list-item>
+          </mdui-list>
+
+          <mdui-divider middle></mdui-divider>
+
+          <mdui-list>
+            <mdui-list-item rounded icon="collections_bookmark" end-icon="arrow_right"
+              href="https://github.com/ChiricoSAMA/Midnight_Blog/issues">
+
+              Blogs
+
+            </mdui-list-item>
+          </mdui-list>
+
+          <mdui-list>
+            <mdui-list-item rounded icon="library_books" end-icon="arrow_right" href="changelogs.html">
+
+              Changelogs
+
+            </mdui-list-item>
+          </mdui-list>
+
+        </mdui-navigation-drawer>
+        <div style="height: 160px;">
+          <mdui-button-icon icon="menu" class="open"></mdui-button-icon>
+        </div>
+      </div>
+      <script>
+        const example = document.querySelector(".example-modal");
+        const navigationDrawer = example.querySelector("mdui-navigation-drawer");
+        const openButton = example.querySelector(".open");
+        const closeButton = example.querySelector(".close");
+        openButton.addEventListener("click", () => navigationDrawer.open = true);
+        closeButton.addEventListener("click", () => navigationDrawer.open = false);
+      </script>
+
+      <!-- Title -->
+      <mdui-top-app-bar-title>
+
+        Blogs博客
+
+        <div style="flex-grow: 1"></div>
+      </mdui-top-app-bar-title><mdui-dropdown trigger="click" stay-open-on-click>
+      </mdui-dropdown>
+      <mdui-navigation-drawer close-on-overlay-click class="drawer">
+    </mdui-top-app-bar>
+
+    <div class="example-scroll-behavior-shrink-elevate" style="height: 30px; overflow: auto">
+
+
+    </div>
+
+  </div>
+  <br>
+
+  <mdui-layout>
+
+    <mdui-layout-item placement="left" class="example-layout-item" style="width: 20%"></mdui-layout-item>
+
+    <mdui-layout-item placement="right" class="example-layout-item" style="width: 20%"></mdui-layout-item>
+
+    <mdui-layout-main class="example-layout-main" style="min-height: 30px">
+      <div class="mdui-prose">
+
+        <!-- main -->
+
+
+        <div class="container">
+
+          <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1"><br>
+
+            <ul id="issue-list" class="main_content" style="padding-left: 0px; opacity: 1; transform: translateY(0px);">
+              <br>
+              <h4 class="title" style="color: rgb(var(--mdui-color-primary));">
+                <mdui-linear-progress></mdui-linear-progress></h4>
+              </br>
+            </ul>
+          </div>
+          <div class="" style="margin: 72px auto 0 auto;">
+            <div style="line-height:1.1;cursor:pointer;text-decoration: none;color: rgb(var(--mdui-color-primary));">
+              <h3>TAGS</h3></div>
+            <div class="tags" style="margin-top:1rem;" id="tags"></div>
+
+            <br>
+            <mdui-divider></mdui-divider>
+
+            <h3 style="font-family: Font-bold;color: rgb(var(--mdui-color-primary))" class="title">
+
+              联系我
+
+            </h3>
+
+            <h4 class="headline">
+
+
+              <a href="https://twitter.com/ChiRicoSAMA">Twitter</a>　　　<a
+                href="https://github.com/ChiricoSAMA">Github</a>　　　<a href="mailto:chiricosama@duck.com">E-mail</a>
+
+
+              <br><br>
+
+            </h4>
+          </div>
+        </div>
+        <div>
+          <ul class="pagination" id="pages"></ul>
+        </div>
+      </div>
+      <br><br>
+</body>
+
+
+
+
+</div>
+</mdui-layout-main>
+</mdui-layout>
+</body>
+
+</html>
+<script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/typed.js"></script>
+<script src="js/gitblog.js"></script>
+<script>
+  $(function () {
+    $('.head').css("opacity", "1");
+    $('.head').css("transform", "translateY(0)");
+    $('.name').css("opacity", "1");
+    $('.name').css("transform", "translateY(0)");
+    $('.main_content').css("opacity", "1");
+    $('.main_content').css("transform", "translateY(0)");
+
+    $("#changerificwordspanid").typed({
+      strings: ["good", "happy", "healthy", "tall"],
+      typeSpeed: 100,
+      startDelay: 10,
+      showCursor: true,
+      shuffle: true,
+      loop: true
+    });
+  });
+</script>
+<script>$.ajax({
+  type: 'get',
+  headers: {
+      Accept: 'application/json',
+  },
+  url: 'your domain name' + 'api.html?id=1',
+  success: function(data) {
+      //your code here
+  }
+});</script>
