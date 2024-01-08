@@ -60,7 +60,7 @@ var gitblog = function(config) {
         hour = (hour<10)?'0'+hour:hour;
         minute = (minute<10)?'0'+minute:minute;
         second = (second<10)?'0'+second:second;
-        return year+'年'+month+'月'+date+'日'+' '+hour+':'+minute+':'+second;
+        return year+'年'+month+'月'+date+'日'+' '+hour+':'+minute;
     }
 
     String.prototype.replaceAll = function(a, b) {
