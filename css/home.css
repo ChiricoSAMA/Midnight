@@ -1,0 +1,19 @@
+
+.main_content>li h4.title a {
+    color: rgb(var(--mdui-color-primary));
+}
+
+.main_content>li .excerpt, .main_content>li .excerpt *, .main_content>li .no-title {
+  font-size: .8rem;
+  color: #7f8c8d;
+  margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.main_content>li .meta {
+  font-size: 1rem;
+  color: #7f8c8d;
+}

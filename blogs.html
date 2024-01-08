@@ -7,13 +7,14 @@
 
   <title>
 
-    Blogs博客
+    博客Blogs
 
   </title>
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/mdui@2.0.3/mdui.css" />
   <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/home.css">
 
 
   <style>
@@ -107,7 +108,7 @@
           <mdui-list>
             <mdui-list-item rounded icon="home" end-icon="arrow_right" href="index.html">
 
-              Home
+              主页Home
 
             </mdui-list-item>
           </mdui-list>
@@ -117,7 +118,7 @@
           <mdui-list>
             <mdui-list-item rounded icon="collections_bookmark" end-icon="arrow_right" href="blogs.html">
 
-              Blogs
+              博客Blogs
 
             </mdui-list-item>
           </mdui-list>
@@ -125,7 +126,7 @@
           <mdui-list>
             <mdui-list-item rounded icon="library_books" end-icon="arrow_right" href="changelogs.html">
 
-              Changelogs
+              更新日志Changelogs
 
             </mdui-list-item>
           </mdui-list>
@@ -147,7 +148,7 @@
       <!-- Title -->
       <mdui-top-app-bar-title>
 
-        Blogs博客
+        博客Blogs
 
         <div style="flex-grow: 1"></div>
       </mdui-top-app-bar-title>
@@ -182,40 +183,25 @@
         <!-- main -->
 
         <div>
-          <h4 class="title">
-            <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1">
-              <ul id="issue-list" class="main_content"
-                style="padding-left: 0px; opacity: 1; transform: translateY(0px);">
-                <br>
-                <h4><mdui-linear-progress></mdui-linear-progress></h4>
-                </br>
+          <h4>
+            <ul id="issue-list" class="main_content">
+              <mdui-linear-progress></mdui-linear-progress>
           </h4>
-          </li>
+          <mdui-divider></mdui-divider>
         </div>
-        <div>
-        </div>
+
       </div>
 
-      <br>
-      <mdui-divider></mdui-divider>
-      <br>
-      </div>
-      </div>
       <h2 style="text-align: center">
         <mdui-card style="width: auto;height:120px"><a class="pagination" id="pages"
             style="text-align: right;color: rgb(var(--mdui-color-primary));"></a></mdui-card>
       </h2>
-      </div>
 
-      </h4>
-
-      </div>
     </mdui-layout-main>
 
   </mdui-layout>
 </body>
 <script src="js/jquery.min.js"></script>
-<script src="js/typed.js"></script>
 <script src="js/gitblog.js"></script>
 <script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
 
