@@ -4,8 +4,7 @@
 }
 
 .main_content>li .excerpt, .main_content>li .excerpt *, .main_content>li .no-title {
-  font-size: .8rem;
-  color: #7f8c8d;
+  color: #424747;
   margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 3; 
