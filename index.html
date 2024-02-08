@@ -1,260 +1,291 @@
-<!DOCTYPE html>
-<html lang="en" class="mdui-theme-dark">
+<!doctype html>
+
+<html lang="zh-CN" class="mdui-theme-dark">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
 
-    午夜Midnight
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  </title>
-
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/mdui@2.0.3/mdui.css" />
-  <link rel="icon" href="favicon.ico">
-
-
-  <style>
-    @font-face {
-      font-family: "Font";
-      src: url("./sarasa-ui-sc-light.ttf");
-    }
-
-    html {
-      font-family: "Font", sans-serif, Segoe UI;
-      -moz-user-select: none;
-      /* Firefox */
-      -webkit-user-select: none;
-      /* WebKit */
-      -ms-user-select: none;
-      /* IE */
-      -khtml-user-select: none;
-      /* KHTML */
-      -o-user-select: none;
-      /* Opera */
-      user-select: none;
-      /* CSS3 */
-    }
-
-    a:link {
-      color: inherit;
-      background-color: transparent;
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: inherit;
-      background-color: transparent;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: inherit;
-      background-color: transparent;
-      text-decoration: none;
-    }
-
-    a:active {
-      color: inherit;
-      background-color: transparent;
-      text-decoration: none;
-    }
-
-    .title {
-      line-height: var(--mdui-typescale-display-small-line-height);
-      font-size: var(--mdui-typescale-display-small-size);
-      letter-spacing: var(--mdui-typescale-display-small-tracking);
-      font-weight: var(--mdui-typescale-display-small-weight);
-    }
-
-    .headline {
-      line-height: var(--mdui-typescale-headline-medium-line-height);
-      font-size: var(--mdui-typescale-headline-medium-size);
-      letter-spacing: var(--mdui-typescale-headline-medium-tracking);
-      font-weight: var(--mdui-typescale-headline-medium-weight);
-    }
-  </style>
+    <!-- CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2.0.3/mdui.css" />
+    <link rel="stylesheet" href="css/home.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href='/AbrilFatface-Regular.ttf' rel='stylesheet'>
+    <!-- title -->
+    <title>Midnight | ChiRico's Blog</title>
 
 </head>
 
-<body>
-
-  <div style="position: relative;overflow: auto; ">
+<body class="fade">
 
 
-    <!-- TOP app bar -->
-    <mdui-top-app-bar variant="medium" scroll-behavior="shrink elevate .example-scroll-behavior-shrink-elevate">
-      </mdui-navigation-drawer>
-      <div class="example-modal" style="position: relative; overflow: hidden">
+    <!-- drawer -->
+    <mdui-navigation-drawer close-on-overlay-click class="example-drawer drawer" id="drawer">
 
-        <!-- Navigation drawer -->
-        <mdui-navigation-drawer modal close-on-esc close-on-overlay-click>
+        <!-- list -->
+        <a href=""><mdui-list>
+                <mdui-list-item rounded icon="home" href="index.html"
+                    style="margin-left: 1rem;margin-right: 1rem;margin-top: 1rem;">
+                    Home
+                </mdui-list-item>
+            </mdui-list></a>
+        <mdui-divider middle></mdui-divider>
+        <a href=""><mdui-list>
+                <mdui-list-item rounded icon="emoji_people" href="about_me.html"
+                    style="margin-left: 1rem;margin-right: 1rem;">
+                    About me
+                </mdui-list-item>
+            </mdui-list></a>
+        <a href=""><mdui-list>
+                <mdui-list-item rounded icon="draw" href="/issue_per_label.html?label=涂鸦"
+                    style="margin-left: 1rem;margin-right: 1rem;">
+                    Pictures
+                </mdui-list-item>
+            </mdui-list></a>
+        <a href=""><mdui-list>
+                <mdui-list-item rounded icon="library_books" href="changelogs.html"
+                    style="margin-left: 1rem;margin-right: 1rem;">
+                    Changelogs
+                </mdui-list-item>
+            </mdui-list></a>
+        <a href=""><mdui-list>
+                <mdui-list-item rounded icon="rss_feed" href="feed.html" style="margin-left: 1rem;margin-right: 1rem;">
+                    Feed
+                </mdui-list-item>
+            </mdui-list></a>
+    </mdui-navigation-drawer>
 
-          <mdui-list>
-            <mdui-list-item rounded icon="home" end-icon="arrow_right" href="index.html">
 
-              主页Home
-
-            </mdui-list-item>
-          </mdui-list>
-
-          <mdui-divider middle></mdui-divider>
-
-          <mdui-list>
-            <mdui-list-item rounded icon="collections_bookmark" end-icon="arrow_right" href="blogs.html">
-
-              博客Blogs
-
-            </mdui-list-item>
-          </mdui-list>
-
-          <mdui-list>
-            <mdui-list-item rounded icon="library_books" end-icon="arrow_right" href="changelogs.html">
-
-              更新日志Changelogs
-
-            </mdui-list-item>
-          </mdui-list>
-
-        </mdui-navigation-drawer>
-        <div style="height: 160px;">
-          <mdui-button-icon icon="menu" class="open"></mdui-button-icon>
-        </div>
-      </div>
-      <script>
-        const example = document.querySelector(".example-modal");
-        const navigationDrawer = example.querySelector("mdui-navigation-drawer");
-        const openButton = example.querySelector(".open");
-        const closeButton = example.querySelector(".close");
-        openButton.addEventListener("click", () => navigationDrawer.open = true);
-        closeButton.addEventListener("click", () => navigationDrawer.open = false);
-      </script>
-
-      <!-- Title -->
-      <mdui-top-app-bar-title>
-
-        午夜Midnight
-
+    <!-- top bar -->
+    <mdui-top-app-bar style="position: sticky;" variant="large" scroll-behavior="shrink">
+        <mdui-button-icon icon="menu"></mdui-button-icon>
+        <mdui-top-app-bar-title>
+            <div style="font-family: font;  color: rgb(var(--mdui-color-on-primary-container));">Midnight</div>
+        </mdui-top-app-bar-title>
         <div style="flex-grow: 1"></div>
-      </mdui-top-app-bar-title>
-
-      <mdui-dropdown trigger="hover">
-        <mdui-button-icon slot="trigger" icon="more_vert"></mdui-button-icon>
-        <mdui-menu>
-          <mdui-menu-item><a href="https://github.com/ChiricoSAMA/Midnight/issues">Github issues</a></mdui-menu-item>
-        </mdui-menu>
-      </mdui-dropdown>
-
-      <mdui-navigation-drawer close-on-overlay-click class="drawer">
+        <mdui-dropdown trigger="hover">
+            <mdui-button-icon slot="trigger" icon="more_vert"></mdui-button-icon>
+            <mdui-menu>
+                <mdui-menu-item>
+                    <a href="https://github.com/ChiricoSAMA/Midnight/issues">
+                        Github issues
+                    </a>
+                </mdui-menu-item>
+            </mdui-menu>
+        </mdui-dropdown>
     </mdui-top-app-bar>
+    <br><br>
 
-    <div class="example-scroll-behavior-shrink-elevate" style="height: 30px; overflow: auto">
+    <!-- main blank-->
+    <mdui-layout>
+        <mdui-layout-item placement="left" class="example-layout-item" style="width: 3%"></mdui-layout-item>
+        <mdui-layout-item placement="right" class="example-layout-item" style="width: 5%"></mdui-layout-item>
+        <mdui-layout-main class="example-layout-main" style="min-height: 30px">
 
+            <!-- main -->
+            <div class="mdui-prose">
+                <div>
 
+                    <ul id="issue-list" class="main_content"></a>
+                        <mdui-linear-progress></mdui-linear-progress>
+
+                </div>
+
+            </div>
+
+            <h2 style="text-align: center;">
+                <mdui-card style="--shape-corner:5rem;font-size: .8rem;"><a class="pagination" id="pages"
+                        style="color: rgb(var(--mdui-color-primary));font-family: font1;"></a></mdui-card>
+            </h2>
+        </mdui-layout-main>
+
+        <!--loading-->
+        <div style="margin: 30px;">
+            <div id="loader-wrapper">
+                <div id="loader">
+                </div>
+                <div class="loader-section section-left">
+                </div>
+                <div class="loader-section section-right">
+                </div>
+            </div>
+        </div>
+    </mdui-layout>
+    <mdui-divider></mdui-divider>
+    <br><br>
+    <div style="text-align: center;color: rgb(var(--mdui-color-outline));font-size: .8rem;">
+        Copyright 2020 - 2024 ChiricoSAMA AllRightsReserved.
     </div>
+    <br>
+    <div style="text-align: center;color: rgb(var(--mdui-color-outline));font-size: .8rem;">
+        <a href="https://github.com/zdhxiong/mdui" target="_blank">MDUI</a> by <a href="https://github.com/zdhxiong"
+            target="_blank">zdhxiong</a>
+    </div> <br>
+    <div style="text-align: center;color: rgb(var(--mdui-color-outline));font-size: .8rem;">
 
-  </div>
-  <br>
-
-  <mdui-layout>
-
-    <mdui-layout-item placement="left" class="example-layout-item" style="width: 8%"></mdui-layout-item>
-
-    <mdui-layout-item placement="right" class="example-layout-item" style="width: 8%"></mdui-layout-item>
-
-
-    <mdui-layout-main class="example-layout-main" style="min-height: 30px">
-      <div class="mdui-prose">
-
-        <!-- main -->
-
-        <h3 style="color: rgb(var(--mdui-color-primary))" class="title">
-
-          欢迎
-
-        </h3>
-
-        <h4 class="headline">
-
-          <mdui-avatar src="./chirico.jpg"></mdui-avatar>
-
-          ChiRicoSAMA的Blog感谢你的访问和关注！
-
-          <br><br>
-
-        </h4>
-
-        <h3 style="color: rgb(var(--mdui-color-primary));" class="title">
-
-          博客
-
-        </h3>
-
-        <h4 class="headline">
-
-          又新又好的 碎 碎 念 通过最新的Material You Design绝赞放送中
-          <br><br>
-
-        </h4>
-
-        <h3 style="color: rgb(var(--mdui-color-primary))" class="title">
-
-          稿件存档
-
-        </h3>
-
-        <h4 class="headline">
-
-          <h style="text-decoration: line-through;color: rgb(var(--mdui-color-outline));">一般一般世界第三</h>
-          的Krita使用者在服务器瞎jb存的，不求观赏，只求自嗨orz
-          <br><br>
-
-        </h4>
-
-
-        <h3 style="color: rgb(var(--mdui-color-primary))" class="title">
-
-          更新日志
-
-        </h3>
-
-        <h4 class="headline">
-
-          小站新开三年，目前使用4EVERLAND托管网页，所有的更新和删减都在更新日志中，现在基于MDUI2.0项目有Material You（Material design 3）了！
-          <br><br>
-          如果你在使用本网站时遇到任何问题，可以在右上角的菜单中的“Github issues”或者本界面页脚处点击“My Mail”向我发邮件反馈，谢谢！
-          <br><br>
-
-        </h4>
-
-        <mdui-divider></mdui-divider>
-
-        <h3 style="font-family: Font-bold;color: rgb(var(--mdui-color-primary))" class="title">
-
-          联系我
-
-        </h3>
-
-        <h4 class="headline">
-
-
-          <a href="https://twitter.com/ChiRicoSAMA" style="margin-right: 42px;">Twitter</a>
-          <a href="https://bsky.app/profile/chiricosama.bsky.social" style="margin-right: 42px;">Bluesky</a>
-          <a href="https://github.com/ChiricoSAMA" style="margin-right: 42px;"> Github</a>
-          <a href="mailto:chiricosama@duck.com" style="margin-right: 42px;">My Mail</a>
-          <a href="https://www.wilddream.net/user/chiricosama" style="margin-right: 42px;">Wilddream</a>
-
-
-          <br><br>
-
-        </h4>
-
-      </div>
-    </mdui-layout-main>
-
-  </mdui-layout>
+        <a href="https://icp.gov.moe/?keyword=20240437" target="_blank">萌ICP备20240437号</a>
+    </div>
+    <br><br>
 </body>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/gitblog.js"></script>
+
 <script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
+
+<script type="text/javascript">
+
+    /* drawer */
+    const navigationDrawer = document.getElementsByTagName("mdui-navigation-drawer")[0];
+    const btn = document.getElementsByTagName("mdui-button-icon")[0];
+    var menu = true;
+    btn.onclick = function () {
+        if (menu) {
+            navigationDrawer.open = true;
+            menu = false;
+        } else {
+            navigationDrawer.open = false;
+            menu = true;
+        }
+    }
+
+    /* loading */
+    document.onreadystatechange = completeLoading;
+    function completeLoading() {
+        if (document.readyState == "complete") {
+            document.getElementById('loader-wrapper').style.display = "none";
+        }
+        else {
+            document.getElementById('loader-wrapper').style.display = "block";
+        }
+    }
+
+
+</script>
+<script>
+    var alertmessage = "欢迎来到ChiRico的小站"
+    var once_per_session = 1
+    function get_cookie(Name) {
+        var search = Name + "="
+        var returnvalue = "";
+        if (document.cookie.length > 0) {
+            offset = document.cookie.indexOf(search)
+            if (offset != -1) { // if cookie exists
+                offset += search.length
+                end = document.cookie.indexOf(";", offset);
+                if (end == -1)
+                    end = document.cookie.length;
+                returnvalue = unescape(document.cookie.substring(offset, end))
+            }
+        }
+        return returnvalue;
+    }
+
+    function alertornot() {
+        if (get_cookie('alerted') == '') {
+            loadalert()
+            document.cookie = "alerted=yes"
+        }
+    }
+
+    function loadalert() {
+        alert(alertmessage)
+    }
+
+    if (once_per_session == 0)
+        loadalert()
+    else
+        alertornot()
+</script>
+
+<script>var CURSOR;
+
+    Math.lerp = (a, b, n) => (1 - n) * a + n * b;
+
+    const getStyle = (el, attr) => {
+        try {
+            return window.getComputedStyle
+                ? window.getComputedStyle(el)[attr]
+                : el.currentStyle[attr];
+        } catch (e) { }
+        return "";
+    };
+
+    class Cursor {
+        constructor() {
+            this.pos = { curr: null, prev: null };
+            this.pt = [];
+            this.create();
+            this.init();
+            this.render();
+        }
+
+        move(left, top) {
+            this.cursor.style["left"] = `${left}px`;
+            this.cursor.style["top"] = `${top}px`;
+        }
+
+        create() {
+            if (!this.cursor) {
+                this.cursor = document.createElement("div");
+                this.cursor.id = "cursor";
+                this.cursor.classList.add("hidden");
+                document.body.append(this.cursor);
+            }
+
+            var el = document.getElementsByTagName('*');
+            for (let i = 0; i < el.length; i++)
+                if (getStyle(el[i], "cursor") == "pointer")
+                    this.pt.push(el[i].outerHTML);
+
+            document.body.appendChild((this.scr = document.createElement("style")));
+            this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='.5'/></svg>") 4 4, auto}`;
+        }
+
+        refresh() {
+            this.scr.remove();
+            this.cursor.classList.remove("hover");
+            this.cursor.classList.remove("active");
+            this.pos = { curr: null, prev: null };
+            this.pt = [];
+
+            this.create();
+            this.init();
+            this.render();
+        }
+
+        init() {
+            document.onmouseover = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");
+            document.onmouseout = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");
+            document.onmousemove = e => { (this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = { x: e.clientX - 8, y: e.clientY - 8 }; this.cursor.classList.remove("hidden"); };
+            document.onmouseenter = e => this.cursor.classList.remove("hidden");
+            document.onmouseleave = e => this.cursor.classList.add("hidden");
+            document.onmousedown = e => this.cursor.classList.add("active");
+            document.onmouseup = e => this.cursor.classList.remove("active");
+        }
+
+        render() {
+            if (this.pos.prev) {
+                this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);
+                this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);
+                this.move(this.pos.prev.x, this.pos.prev.y);
+            } else {
+                this.pos.prev = this.pos.curr;
+            }
+            requestAnimationFrame(() => this.render());
+        }
+    }
+
+    (() => {
+        CURSOR = new Cursor();
+        // 需要重新获取列表时，使用 CURSOR.refresh()
+    })();
+
+</script>
 
 </html>
