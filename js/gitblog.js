@@ -60,7 +60,7 @@ var gitblog = function(config) {
         hour = (hour<10)?'0'+hour:hour;
         minute = (minute<10)?'0'+minute:minute;
         second = (second<10)?'0'+second:second;
-        return year+'年'+month+'月'+date+'日'+' '+hour+':'+minute;
+        return year+'年'+month+'月'+date+'日';
     }
 
     String.prototype.replaceAll = function(a, b) {
@@ -96,7 +96,7 @@ var gitblog = function(config) {
             }
             if (Object.keys(config.friends).length != 0) {
                 var menu_friend = document.getElementById("friends");
-                menu_friend.innerHTML = '<li><text style="font-zise:14px"><span style="color: white;transform:translateX(4px)">友链：</span></text></li>';
+                menu_friend.innerHTML = '<li><text style="font-zise:14px"><span style="transform:translateX(4px)">友链：</span></text></li>';
                 for (var name in config.friends) {
                     menu_friend.innerHTML += '<li><a href=' + config.friends[name] + ' target="_blank"><span>' + name + '</span></a></li>';
                 }
@@ -152,7 +152,7 @@ var gitblog = function(config) {
         this.page = new Pages();
         this.icons = [];
         this.icon_num = 0;
-        this.content = 'Powered by <a href="https://github.com/imuncle/gitblog" target="_blank" style="color: aquamarine;text-decoration:none;border-bottom: 1px solid #79f8d4;">gitblog</a>';
+        this.content = 'Powered by <a href="https://github.com/chiricosama/blog" target="_blank" ">blog</a>';
     }
 
     Footer.prototype = {
@@ -620,11 +620,11 @@ var gitblog = function(config) {
             for (var i in data) {
                 var labels_content = '';
                 for (var j in data[i].labels) {
-                    labels_content += '<li><a href=issue_per_label.html?label=' + data[i].labels[j].name + '>' + data[i].labels[j].name + '</a></li>';
+                    labels_content +=  '<mdui-chip><li><a class:"a" href=issue_per_label.html?label=' + data[i].labels[j].name + '>' + data[i].labels[j].name + '</a></li></mdui-chip>';
                 }
                 data[i].body = data[i].body.replace(/<.*?>/g, "");
                 data[i].created_at = self.utc2localTime(data[i].created_at);
-                document.getElementById('issue-list').innerHTML += '<li><p class="date">' + data[i].created_at + '</p><h4 class="title"><a href="content.html?id=' + data[i].number + '">' + data[i].title + '</a></h4><div class="excerpt"><p class="issue">' + data[i].body + '</p></div>' + '<ul class="meta"><li>' + data[i].user.login + '</li>' + labels_content + '</ul></li>';
+                document.getElementById('issue-list').innerHTML += '<li><p class="date">' + data[i].created_at + '</p><h4 class="title"><a href="content.html?id=' + data[i].number + '">' + data[i].title + '</a></h4><div class="excerpt"><p class="issue">' + data[i].body + '</p></div>' + '<li>' + '</li>' + labels_content + '</ul></li>';
             }
         },
         show: function(request_url) {
