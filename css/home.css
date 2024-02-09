@@ -3,17 +3,29 @@
   font-family: font2;
 }
 
+.round_icon{
+  width: 64px;
+  height: 64px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
 #cursor {
   position: fixed;
   width: 16px;
   height: 16px;
-  background: rgb(var(--mdui-color-on-primary-container));
+  mix-blend-mode: exclusion;
+  background-color: #fff;
   border-radius: 8px;
-  opacity: 0.25;
   z-index: 10086;
   pointer-events: none;
   transition: 0.2s ease-in-out;
-  transition-property: background, opacity, transform;
+  transition-property: background-color, opacity, transform;
+  
 }
 
 #cursor.hidden {
@@ -31,7 +43,7 @@
 }
 
 .main_content>li .excerpt,
-.main_content>li .excerpt *,
+.main_content>li .excerpt,
 .main_content>li .no-title {
   color: rgb(var(--mdui-color-outline));
   margin: 0;
@@ -57,15 +69,18 @@ li {
   margin: 10px 0;
 }
 
-.main_content>li .excerpt, .main_content>li .excerpt *, .main_content>li .no-title {
+.main_content>li .excerpt,
+.main_content>li .excerpt *,
+.main_content>li .no-title {
   font-size: .9rem;
   line-height: 1.5;
   margin: 0;
 }
+
 .main_content>li .meta {
   padding: 13px 13px;
   font-size: .75rem;
-  
+
 }
 
 .main_content>li .meta>li {
@@ -73,6 +88,7 @@ li {
   display: inline-block;
 
 }
+
 .main_content>li .meta {
   font-size: 1rem;
 }
@@ -83,31 +99,35 @@ li {
   src: url("./AlfaSlabOne-Regular.ttf")format("truetype");
 
 }
+
 @font-face {
 
-    font-family: "font1";
+  font-family: "font1";
   src: url("./sarasaui.ttf")format("truetype");
 
 }
+
 @font-face {
 
-font-family: "font2";
-src: url("./SarasaUiSC-SemiBold.ttf")format("truetype");
+  font-family: "font2";
+  src: url("./SarasaUiSC-SemiBold.ttf")format("truetype");
 
 }
-html{
+
+html {
   font-family: "font1", sans-serif;
-  -moz-user-select: none; 
-  -webkit-user-select: none; 
-  -ms-user-select: none; 
-  -khtml-user-select: none; 
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
   user-select: none;
-} 
+ cursor: none;
+}
 
 a:link {
   background-color: transparent;
   text-decoration: none;
-    color: rgb(var(--mdui-color-on-primary-container));
+  color: rgb(var(--mdui-color-on-primary-container));
 }
 
 a:visited {
@@ -386,8 +406,10 @@ a:active {
 
 .pagination>li>a,
 .pagination>li>span {
-  position: relative;
-  float: left;
-  padding: 42px 22px;
-  color: rgb(var(--mdui-color-primary))
+  cursor: pointer
+}
+
+mdui-chip {
+  cursor: pointer;
+
 }

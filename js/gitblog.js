@@ -216,16 +216,16 @@ var gitblog = function(config) {
         show: function() {
             var page = this;
             $('#pages').css('display', 'inline-block');
-            document.getElementById('pages').innerHTML = '<li id="last_page"><a id="last" style="cursor: pointer">«</a></li>';
+            document.getElementById('pages').innerHTML = '<mdui-button><li id="last_page"><a id="last" style="cursor: pointer">«</a></li></mdui-button> ';
             if (page.pages <= page.pageLimit) {
                 for (var i = 1; i <= page.pages; i++) {
-                    document.getElementById('pages').innerHTML += '<li><a id="page' + i + '" style="cursor:pointer">' + i + '</a></li>';
+                    document.getElementById('pages').innerHTML += '<mdui-button><li><a id="page' + i + '" style="cursor:pointer">' + i + '</a></li></mdui-button> ';
                 }
             } else {
                 if (page.page >= 5) {
                     document.getElementById('pages').innerHTML += '<li><a id="page1" style="cursor:pointer">1</a></li>';
                     document.getElementById('pages').innerHTML += '<li><a style="cursor:pointer;pointer-events: none;">...</a></li>';
-                    document.getElementById('pages').innerHTML += '<li><a id="page' + (page.page - 1) + '" style="cursor:pointer">' + (page.page - 1) + '</a></li>';
+                    document.getElementById('pages').innerHTML += '<li><a id="page' + (page.page - 1) + '" v>' + (page.page - 1) + '</a></li>';
                     document.getElementById('pages').innerHTML += '<li><a id="page' + page.page + '" style="cursor:pointer">' + page.page + '</a></li>';
                 } else {
                     for (var i = 1; i <= page.page; i++) {
@@ -242,7 +242,7 @@ var gitblog = function(config) {
                     }
                 }
             }
-            document.getElementById('pages').innerHTML += '<li id="next_page"><a id="next" style="cursor: pointer">»</a></li>';
+            document.getElementById('pages').innerHTML += ' <mdui-button ><li id="next_page"><a id="next" style="cursor: pointer;">»</a></li></mdui-button>';
             for (var i = 1; i <= page.pages; i++) {
                 if (self.options.label != undefined) {
                     $('#page' + i).click(function() {
@@ -620,7 +620,7 @@ var gitblog = function(config) {
             for (var i in data) {
                 var labels_content = '';
                 for (var j in data[i].labels) {
-                    labels_content +=  '<mdui-chip><li><a class:"a" href=issue_per_label.html?label=' + data[i].labels[j].name + '>' + data[i].labels[j].name + '</a></li></mdui-chip>';
+                    labels_content +=  '<mdui-chip onclick="#" href=issue_per_label.html?label=' + data[i].labels[j].name + '>' + data[i].labels[j].name + '</mdui-chip>';
                 }
                 data[i].body = data[i].body.replace(/<.*?>/g, "");
                 data[i].created_at = self.utc2localTime(data[i].created_at);
@@ -635,7 +635,7 @@ var gitblog = function(config) {
                 success: function(data) {
                     if (self.options.q == undefined || self.options.q == null) {
                         if (data.length == 0) {
-                            document.getElementById('issue-list').innerHTML = '这个人很勤快但这里什么都还没写~';
+                            document.getElementById('issue-list').innerHTML = '未找到内容，在写了在写了';
                             $('.footer').css('position', 'absolute');
                         } else {
                             issue.addItem(data);
@@ -804,6 +804,7 @@ var gitblog = function(config) {
     console.log('\n' + ' %c Gitblog' + ' %c https://github.com/imuncle/gitblog \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
 }
 
+
 $.ajax({
     type: 'get',
     headers: {
@@ -814,3 +815,117 @@ $.ajax({
         new gitblog(data).init();
     }
 });
+
+var CURSOR;
+
+Math.lerp = (a, b, n) => (1 - n) * a + n * b;
+
+const getStyle = (el, attr) => {
+    try {
+        return window.getComputedStyle
+            ? window.getComputedStyle(el)[attr]
+            : el.currentStyle[attr];
+    } catch (e) { }
+    return "";
+};
+
+
+class Cursor {
+    constructor() {
+        this.pos = { curr: null, prev: null };
+        this.pt = [];
+        this.create();
+        this.init();
+        this.render();
+    }
+
+    move(left, top) {
+        this.cursor.style["left"] = `${left}px`;
+        this.cursor.style["top"] = `${top}px`;
+    }
+
+    create() {
+        if (!this.cursor) {
+            this.cursor = document.createElement("div");
+            this.cursor.id = "cursor";
+            this.cursor.classList.add("hidden");
+            document.body.append(this.cursor);
+        }
+
+        var el = document.getElementsByTagName('*');
+        for (let i = 0; i < el.length; i++)
+            if (getStyle(el[i], "cursor") == "pointer")
+                this.pt.push(el[i].outerHTML);
+        document.body.appendChild((this.scr = document.createElement("style")));
+        this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='.5'/></svg>") 4 4, auto !important}`;
+    }
+
+    refresh() {
+        this.scr.remove();
+        this.cursor.classList.remove("hover");
+        this.cursor.classList.remove("active");
+        this.pos = { curr: null, prev: null };
+        this.pt = [];
+        this.create();
+        this.init();
+        this.render();
+    }
+
+    init() {
+        document.onmouseover = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");
+        document.onmouseout = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");
+        document.onmousemove = e => { (this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = { x: e.clientX - 8, y: e.clientY - 8 }; this.cursor.classList.remove("hidden"); };
+        document.onmouseenter = e => this.cursor.classList.remove("hidden");
+        document.onmouseleave = e => this.cursor.classList.add("hidden");
+        document.onmousedown = e => this.cursor.classList.add("active");
+        document.onmouseup = e => this.cursor.classList.remove("active");
+    }
+
+    render() {
+        if (this.pos.prev) {
+            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);
+            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);
+            this.move(this.pos.prev.x, this.pos.prev.y);
+        } else {
+            this.pos.prev = this.pos.curr;
+        }
+        requestAnimationFrame(() => this.render());
+    }
+}
+
+(() => {
+    CURSOR = new Cursor();
+})();
+
+
+    /* drawer */
+    const navigationDrawer = document.getElementsByTagName("mdui-navigation-drawer")[0];
+    const btn = document.getElementsByTagName("mdui-button-icon")[0];
+    var menu = true;
+    btn.onclick = function () {
+        if (menu) {
+            navigationDrawer.open = true;
+            menu = false;
+        } else {
+            navigationDrawer.open = false;
+            menu = true;
+        }
+    }
+
+    /* loading */
+    document.onreadystatechange = completeLoading;
+    function completeLoading() {
+        if (document.readyState == "complete") {
+            document.getElementById('loader-wrapper').style.display = "none";
+        }
+        else {
+            document.getElementById('loader-wrapper').style.display = "block";
+        }
+    }
+
+    const height = window.innerWidth
+    window.onload = function () {
+        if (height > 850) {
+            navigationDrawer.open = true;
+        } 
+    }

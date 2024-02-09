@@ -20,49 +20,52 @@
 </head>
 
 <body class="fade">
-
-
   <!-- drawer -->
   <mdui-navigation-drawer close-on-overlay-click class="example-drawer drawer" id="drawer">
 
     <!-- list -->
-    <a href=""><mdui-list>
-        <mdui-list-item rounded icon="home" href="index.html"
-          style="margin-left: 1rem;margin-right: 1rem;margin-top: 1rem;">
-          Home
-        </mdui-list-item>
-      </mdui-list></a>
+    <mdui-list>
+      <mdui-list-item nonclickable rounded href="chirico.html" style="margin-left: 1rem;margin-right: 1rem;"><img
+          src="/chirico.jpg" style="margin-top: 1rem;margin-bottom: 1rem;" class="round_icon" alt="ChiRicoSAMA">
+        <div style="margin-bottom: 1rem;">
+          ChiRicoSAMA</div>
+      </mdui-list-item></mdui-list>
+    <mdui-list>
+      <mdui-list-item rounded icon="home" href="index.html" style="margin-left: 1rem;margin-right: 1rem;">
+        Home
+      </mdui-list-item>
+    </mdui-list>
     <mdui-divider middle></mdui-divider>
-    <a href=""><mdui-list>
-        <mdui-list-item rounded icon="emoji_people" href="about_me.html" style="margin-left: 1rem;margin-right: 1rem;">
-          About me
-        </mdui-list-item>
-      </mdui-list></a>
-    <a href=""><mdui-list>
-        <mdui-list-item rounded icon="draw" href="/issue_per_label.html?label=涂鸦"
-          style="margin-left: 1rem;margin-right: 1rem;">
-          Pictures
-        </mdui-list-item>
-      </mdui-list></a>
-    <a href=""><mdui-list>
-        <mdui-list-item rounded icon="library_books" href="changelogs.html"
-          style="margin-left: 1rem;margin-right: 1rem;">
-          Changelogs
-        </mdui-list-item>
-      </mdui-list></a>
-    <a href=""><mdui-list>
-        <mdui-list-item rounded icon="rss_feed" href="feed.html" style="margin-left: 1rem;margin-right: 1rem;">
-          Feed
-        </mdui-list-item>
-      </mdui-list></a>
+    <mdui-list>
+      <mdui-list-item rounded icon="draw" href="/issue_per_label.html?label=Doodles"
+        style="margin-left: 1rem;margin-right: 1rem;">
+        Doodles
+      </mdui-list-item>
+    </mdui-list>
+    <mdui-list>
+      <mdui-list-item rounded icon="library_books" href="changelogs.html" style="margin-left: 1rem;margin-right: 1rem;">
+        Changelogs
+      </mdui-list-item>
+    </mdui-list>
+    <mdui-list>
+      <mdui-list-item rounded icon="rss_feed" href="https://openrss.org/github.com/chiricosama/blog/issues"
+        style="margin-left: 1rem;margin-right: 1rem;">
+        Feed
+      </mdui-list-item>
+    </mdui-list>
+    <mdui-list>
+      <mdui-list-item rounded icon="link" href="links.html" style="margin-left: 1rem;margin-right: 1rem;">
+        Links
+      </mdui-list-item>
+    </mdui-list>
   </mdui-navigation-drawer>
 
 
   <!-- top bar -->
   <mdui-top-app-bar style="position: sticky;" variant="large" scroll-behavior="shrink">
     <mdui-button-icon icon="menu"></mdui-button-icon>
-    <mdui-top-app-bar-title id="title">
-      <div style="color: rgb(var(--mdui-color-on-primary-container));"></div>
+    <mdui-top-app-bar-title id="title" style="font-family: font;">
+      <div style="font-family: font;  color: rgb(var(--mdui-color-on-primary-container));"></div>
     </mdui-top-app-bar-title>
     <div style="flex-grow: 1"></div>
     <mdui-dropdown trigger="hover">
@@ -86,11 +89,11 @@
 
       <!-- main -->
       <div class="mdui-prose">
-          <ul id="issue-list" class="main_content">
-            <br>
-            <mdui-linear-progress></mdui-linear-progress>
-            </br>
-          </ul>
+        <ul id="issue-list" class="main_content">
+          <br>
+          <mdui-linear-progress></mdui-linear-progress>
+          </br>
+        </ul>
       </div>
       <h2 style="text-align: center;">
         <mdui-card style="--shape-corner:5rem;font-size: .8rem;"><a class="pagination" id="pages"

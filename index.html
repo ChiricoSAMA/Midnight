@@ -28,41 +28,42 @@
     <mdui-navigation-drawer close-on-overlay-click class="example-drawer drawer" id="drawer">
 
         <!-- list -->
-        <a href=""><mdui-list>
-                <mdui-list-item rounded icon="home" href="index.html"
-                    style="margin-left: 1rem;margin-right: 1rem;margin-top: 1rem;">
-                    Home
-                </mdui-list-item>
-            </mdui-list></a>
+        <mdui-list>
+            <mdui-list-item nonclickable rounded href="chirico.html" style="margin-left: 1rem;margin-right: 1rem;margin-top: 1rem;"><img
+                    src="/chirico.jpg" style="margin-top: 1rem;margin-bottom: 1rem;" class="round_icon"
+                    alt="ChiRicoSAMA">
+                <div style="margin-bottom: 1rem;">
+                    ChiRicoSAMA</div>
+            </mdui-list-item></mdui-list>
+        <mdui-list>
+            <mdui-list-item rounded icon="home" href="index.html" style="margin-left: 1rem;margin-right: 1rem;">
+                Home
+            </mdui-list-item>
+        </mdui-list>
         <mdui-divider middle></mdui-divider>
-        <a href=""><mdui-list>
-                <mdui-list-item rounded icon="emoji_people" href="about.html"
-                    style="margin-left: 1rem;margin-right: 1rem;">
-                    About me
-                </mdui-list-item>
-            </mdui-list></a>
-        <a href=""><mdui-list>
-                <mdui-list-item rounded icon="draw" href="/issue_per_label.html?label=涂鸦"
-                    style="margin-left: 1rem;margin-right: 1rem;">
-                    Pictures
-                </mdui-list-item>
-            </mdui-list></a>
-        <a href=""><mdui-list>
-                <mdui-list-item rounded icon="library_books" href="changelogs.html"
-                    style="margin-left: 1rem;margin-right: 1rem;">
-                    Changelogs
-                </mdui-list-item>
-            </mdui-list></a>
-        <a href=""><mdui-list>
-                <mdui-list-item rounded icon="rss_feed" href="https://openrss.org/github.com/chiricosama/blog/issues" style="margin-left: 1rem;margin-right: 1rem;">
-                    Feed
-                </mdui-list-item>
-            </mdui-list></a>
-            <a href=""><mdui-list>
-                <mdui-list-item rounded icon="rss_feed" href="links.html" style="margin-left: 1rem;margin-right: 1rem;">
-                    Links
-                </mdui-list-item>
-            </mdui-list></a>
+        <mdui-list>
+            <mdui-list-item rounded icon="draw" href="/issue_per_label.html?label=Doodles"
+                style="margin-left: 1rem;margin-right: 1rem;">
+                Doodles
+            </mdui-list-item>
+        </mdui-list>
+        <mdui-list>
+            <mdui-list-item rounded icon="library_books" href="changelogs.html"
+                style="margin-left: 1rem;margin-right: 1rem;">
+                Changelogs
+            </mdui-list-item>
+        </mdui-list>
+        <mdui-list>
+            <mdui-list-item rounded icon="rss_feed" href="https://openrss.org/github.com/chiricosama/blog/issues"
+                style="margin-left: 1rem;margin-right: 1rem;">
+                Feed
+            </mdui-list-item>
+        </mdui-list>
+        <mdui-list>
+            <mdui-list-item rounded icon="link" href="links.html" style="margin-left: 1rem;margin-right: 1rem;">
+                Links
+            </mdui-list-item>
+        </mdui-list>
     </mdui-navigation-drawer>
 
 
@@ -96,17 +97,24 @@
             <div class="mdui-prose">
                 <div>
 
+                    <!-- issues -->
                     <ul id="issue-list" class="main_content"></a>
+
+                        <!-- loading -->
                         <mdui-linear-progress></mdui-linear-progress>
 
                 </div>
-
             </div>
 
-            <h2 style="text-align: center;">
-                <mdui-card style="--shape-corner:5rem;font-size: .8rem;"><a class="pagination" id="pages"
-                        style="color: rgb(var(--mdui-color-primary));font-family: font1;"></a></mdui-card>
-            </h2>
+            <br><br>
+
+            <div style="text-align: center;">
+                <a class="pagination" id="pages"
+                    style="color: rgb(var(--mdui-color-primary));font-family: font1;font-size: medium;"></a>
+            </div>
+
+            <br><br>
+
         </mdui-layout-main>
 
         <!--loading-->
@@ -120,22 +128,38 @@
                 </div>
             </div>
         </div>
+
     </mdui-layout>
+
     <mdui-divider></mdui-divider>
+
     <br><br>
+
     <div style="text-align: center;color: rgb(var(--mdui-color-outline));font-size: .8rem;">
-        Copyright 2020 - 2024 ChiricoSAMA AllRightsReserved.
+        <a href="https://github.com/zdhxiong/mdui" target="_blank">
+            MDUI
+        </a>
+        by
+        <a href="https://github.com/zdhxiong" target="_blank">
+            zdhxiong
+        </a>
     </div>
+
     <br>
-    <div style="text-align: center;color: rgb(var(--mdui-color-outline));font-size: .8rem;">
-        <a href="https://github.com/zdhxiong/mdui" target="_blank">MDUI</a> by <a href="https://github.com/zdhxiong"
-            target="_blank">zdhxiong</a>
-    </div> <br>
+
     <div style="text-align: center;color: rgb(var(--mdui-color-outline));font-size: .8rem;">
 
         <a href="https://icp.gov.moe/?keyword=20240437" target="_blank">萌ICP备20240437号</a>
     </div>
+
+    <br>
+
+    <div style="text-align: center;  color: rgb(var(--mdui-color-outline));font-size: .8rem;">
+        Copyright 2020 - 2024 ChiricoSAMA AllRightsReserved.
+    </div>
+
     <br><br>
+
 </body>
 
 <script src="js/jquery.min.js"></script>
@@ -143,37 +167,8 @@
 
 <script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
 
-<script type="text/javascript">
-
-    /* drawer */
-    const navigationDrawer = document.getElementsByTagName("mdui-navigation-drawer")[0];
-    const btn = document.getElementsByTagName("mdui-button-icon")[0];
-    var menu = true;
-    btn.onclick = function () {
-        if (menu) {
-            navigationDrawer.open = true;
-            menu = false;
-        } else {
-            navigationDrawer.open = false;
-            menu = true;
-        }
-    }
-
-    /* loading */
-    document.onreadystatechange = completeLoading;
-    function completeLoading() {
-        if (document.readyState == "complete") {
-            document.getElementById('loader-wrapper').style.display = "none";
-        }
-        else {
-            document.getElementById('loader-wrapper').style.display = "block";
-        }
-    }
-
-
-</script>
 <script>
-    var alertmessage = "欢迎来到ChiRico的小站"
+    var alertmessage = "初次见面，感谢你的访问，别忘了留个评论www"
     var once_per_session = 1
     function get_cookie(Name) {
         var search = Name + "="
@@ -206,91 +201,6 @@
         loadalert()
     else
         alertornot()
-</script>
-
-<script>var CURSOR;
-
-    Math.lerp = (a, b, n) => (1 - n) * a + n * b;
-
-    const getStyle = (el, attr) => {
-        try {
-            return window.getComputedStyle
-                ? window.getComputedStyle(el)[attr]
-                : el.currentStyle[attr];
-        } catch (e) { }
-        return "";
-    };
-
-    class Cursor {
-        constructor() {
-            this.pos = { curr: null, prev: null };
-            this.pt = [];
-            this.create();
-            this.init();
-            this.render();
-        }
-
-        move(left, top) {
-            this.cursor.style["left"] = `${left}px`;
-            this.cursor.style["top"] = `${top}px`;
-        }
-
-        create() {
-            if (!this.cursor) {
-                this.cursor = document.createElement("div");
-                this.cursor.id = "cursor";
-                this.cursor.classList.add("hidden");
-                document.body.append(this.cursor);
-            }
-
-            var el = document.getElementsByTagName('*');
-            for (let i = 0; i < el.length; i++)
-                if (getStyle(el[i], "cursor") == "pointer")
-                    this.pt.push(el[i].outerHTML);
-
-            document.body.appendChild((this.scr = document.createElement("style")));
-            this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='.5'/></svg>") 4 4, auto}`;
-        }
-
-        refresh() {
-            this.scr.remove();
-            this.cursor.classList.remove("hover");
-            this.cursor.classList.remove("active");
-            this.pos = { curr: null, prev: null };
-            this.pt = [];
-
-            this.create();
-            this.init();
-            this.render();
-        }
-
-        init() {
-            document.onmouseover = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");
-            document.onmouseout = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");
-            document.onmousemove = e => { (this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = { x: e.clientX - 8, y: e.clientY - 8 }; this.cursor.classList.remove("hidden"); };
-            document.onmouseenter = e => this.cursor.classList.remove("hidden");
-            document.onmouseleave = e => this.cursor.classList.add("hidden");
-            document.onmousedown = e => this.cursor.classList.add("active");
-            document.onmouseup = e => this.cursor.classList.remove("active");
-        }
-
-        render() {
-            if (this.pos.prev) {
-                this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);
-                this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);
-                this.move(this.pos.prev.x, this.pos.prev.y);
-            } else {
-                this.pos.prev = this.pos.curr;
-            }
-            requestAnimationFrame(() => this.render());
-        }
-    }
-
-    (() => {
-        CURSOR = new Cursor();
-        // 需要重新获取列表时，使用 CURSOR.refresh()
-    })();
-
 </script>
 
 </html>
