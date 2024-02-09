@@ -94,6 +94,7 @@
           <div id="content" style="margin-top:50px;margin-bottom: 50px">
           </div>
         </div>
+        
     </mdui-layout-main>
 
     <!--loading-->
@@ -109,21 +110,18 @@
     </div>
   </mdui-layout>
   <mdui-divider></mdui-divider>
-  <br><br>
-  <div style="text-align: center;color: rgb(var(--mdui-color-outline));font-size: .8rem;">
-    Copyright 2020 - 2024 ChiricoSAMA AllRightsReserved.
+  <div>
   </div>
-  <br>
-  <div style="text-align: center;color: rgb(var(--mdui-color-outline));font-size: .8rem;">
-    <a href="https://github.com/zdhxiong/mdui" target="_blank">MDUI</a> by <a href="https://github.com/zdhxiong"
-      target="_blank">zdhxiong</a>
-  </div> <br>
-  <div style="text-align: center;color: rgb(var(--mdui-color-outline));font-size: .8rem;">
 
-    <a href="https://icp.gov.moe/?keyword=20240437" target="_blank">萌ICP备20240437号</a>
-  </div>
-  <br><br>
 </body>
+
+<script src="https://utteranc.es/client.js"
+        repo="chiricosama/blog"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/gitblog.js"></script>
@@ -159,7 +157,16 @@
 
 
 </script>
-
+<script>
+  (function(){
+    setTimeout(function() {
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    }, 500);
+    setInterval(function() {
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }, 500);
+  })()
+</script>
 <script>var CURSOR;
 
   Math.lerp = (a, b, n) => (1 - n) * a + n * b;
