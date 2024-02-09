@@ -928,10 +928,3 @@ window.onload = function () {
         navigationDrawer.open = true;
     }
 }
-
-window.onload = function () {
-    if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-        document.getElementById("body").style.borderBottom = "cursor:default:";
-
-    }
-}

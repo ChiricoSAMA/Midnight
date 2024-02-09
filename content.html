@@ -66,8 +66,8 @@
   <!-- top bar -->
   <mdui-top-app-bar style="position: sticky;" variant="large" scroll-behavior="shrink">
     <mdui-button-icon icon="menu"></mdui-button-icon>
-    <mdui-top-app-bar-title>
-      <div style="font-family: font;  color: rgb(var(--mdui-color-on-primary-container));">Midnight</div>
+    <mdui-top-app-bar-title id="title">
+      <div style="color: rgb(var(--mdui-color-on-primary-container));"></div>
     </mdui-top-app-bar-title>
     <div style="flex-grow: 1"></div>
     <mdui-dropdown trigger="hover">
@@ -94,8 +94,15 @@
       <div class="mdui-prose">
         <div class="main">
           <text id="instruction"></text>
-          <mdui-layout-item placement="right" class="example-layout-item" style="width: 20%"></mdui-layout-item>
-          <div id="content" style="margin-top:50px;margin-bottom: 50px">
+          <div style="width:100%;">
+            <div class="container">
+              <mdui-layout-item placement="right" class="example-layout-item" style="width: 20%"></mdui-layout-item>
+              <div id="content" style="margin-top:50px;margin-bottom: 50px">
+                <mdui-linear-progress></mdui-linear-progress>
+              </div>
+
+
+            </div>
           </div>
         </div>
 
