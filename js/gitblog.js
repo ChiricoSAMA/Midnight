@@ -1,7 +1,7 @@
-var gitblog = function(config) {
+var gitblog = function (config) {
     var self = this;
 
-    self.getUrlParam = function(name) {
+    self.getUrlParam = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return decodeURI(r[2]);
@@ -18,7 +18,7 @@ var gitblog = function(config) {
         redirect_url: null,
     }
 
-    self.set = function() {
+    self.set = function () {
         if (self.getUrlParam('id') != undefined) {
             self.options.id = parseInt(self.getUrlParam('id'));
         }
@@ -48,7 +48,7 @@ var gitblog = function(config) {
 
     self.set();
 
-    self.utc2localTime = function(time) {
+    self.utc2localTime = function (time) {
         var time_string_utc_epoch = Date.parse(time);
         var unixTimestamp = new Date(time_string_utc_epoch);
         var year = unixTimestamp.getFullYear();
@@ -57,41 +57,41 @@ var gitblog = function(config) {
         var hour = unixTimestamp.getHours();
         var minute = unixTimestamp.getMinutes();
         var second = unixTimestamp.getSeconds();
-        hour = (hour<10)?'0'+hour:hour;
-        minute = (minute<10)?'0'+minute:minute;
-        second = (second<10)?'0'+second:second;
-        return year+'年'+month+'月'+date+'日';
+        hour = (hour < 10) ? '0' + hour : hour;
+        minute = (minute < 10) ? '0' + minute : minute;
+        second = (second < 10) ? '0' + second : second;
+        return year + '年' + month + '月' + date + '日';
     }
 
-    String.prototype.replaceAll = function(a, b) {
+    String.prototype.replaceAll = function (a, b) {
         return this.replace(new RegExp(a, 'gm'), b);
     }
 
-    var Info = function() {
+    var Info = function () {
         this.title = config.title;
         this.instruction = config.instruction;
     }
 
-    Info.prototype.init = function() {
+    Info.prototype.init = function () {
         $('#title').text(this.title);
         $('#instruction').text(this.instruction);
         document.getElementsByTagName("title")[0].innerText = this.title;
     }
 
-    var Menu = function() {
+    var Menu = function () {
         this.labels = [];
     }
 
     Menu.prototype = {
-        searchOnblur: function() {
+        searchOnblur: function () {
             if ($('.search-input').val() == "") {
                 $(".search-input").css("width", '42px');
                 $(".search-input").css("z-index", -1);
             }
         },
-        show: function() {
+        show: function () {
             var menu = this;
-            for(var name in config.menu) {
+            for (var name in config.menu) {
                 document.getElementById("menu").innerHTML += '<li><a href=' + config.menu[name] + '><span>' + name + '</span></a></li>';
             }
             if (Object.keys(config.friends).length != 0) {
@@ -102,13 +102,13 @@ var gitblog = function(config) {
                 }
             }
             $(".search-input").on("blur",
-            function() {
-                menu.searchOnblur();
-            });
+                function () {
+                    menu.searchOnblur();
+                });
         }
     }
 
-    var Icon = function(options, name, left) {
+    var Icon = function (options, name, left) {
         this.icon_src = options.icon_src;
         this.href = options.href;
         this.hidden_img = options.hidden_img;
@@ -118,24 +118,24 @@ var gitblog = function(config) {
     }
 
     Icon.prototype = {
-        init: function() {
+        init: function () {
             var icon = this;
-            if(icon.href != undefined && icon.href != null) {
-                document.getElementById("div_"+icon.name).innerHTML += '<a target="_blank" title="' + icon.name + '" id="icon_' + icon.name + '" href="' + icon.href + '"><img src="' + icon.icon_src + '" style="width:50px;margin-left:10px;margin-right:10px"></a>';
+            if (icon.href != undefined && icon.href != null) {
+                document.getElementById("div_" + icon.name).innerHTML += '<a target="_blank" title="' + icon.name + '" id="icon_' + icon.name + '" href="' + icon.href + '"><img src="' + icon.icon_src + '" style="width:50px;margin-left:10px;margin-right:10px"></a>';
             } else {
-                document.getElementById("div_"+icon.name).innerHTML += '<img src="' + icon.icon_src + '" title="' + icon.name + '" id="icon_' + icon.name + '" style="width:50px;margin-left:10px;margin-right:10px;cursor:pointer">';
+                document.getElementById("div_" + icon.name).innerHTML += '<img src="' + icon.icon_src + '" title="' + icon.name + '" id="icon_' + icon.name + '" style="width:50px;margin-left:10px;margin-right:10px;cursor:pointer">';
             }
             if (icon.hidden_img != undefined && icon.hidden_img != null) {
-                document.getElementById("div_"+icon.name).innerHTML += '<img id="' + icon.name + '" src="' + icon.hidden_img + '" style="width: ' + icon.width + 'px; position: absolute; left: calc(50% - ' + this.position + 'px); bottom: 180px; transition: all 0.3s ease 0s; box-shadow: rgb(149, 165, 166) 0px 0px 5px; transform: translateY(-20px); z-index: -1; opacity: 0">';
-                $('#icon_' + icon.name).mouseover(function() {
+                document.getElementById("div_" + icon.name).innerHTML += '<img id="' + icon.name + '" src="' + icon.hidden_img + '" style="width: ' + icon.width + 'px; position: absolute; left: calc(50% - ' + this.position + 'px); bottom: 180px; transition: all 0.3s ease 0s; box-shadow: rgb(149, 165, 166) 0px 0px 5px; transform: translateY(-20px); z-index: -1; opacity: 0">';
+                $('#icon_' + icon.name).mouseover(function () {
                     icon.changeIcon(icon.name, 'show');
                 });
-                $('#icon_' + icon.name).mouseout(function() {
+                $('#icon_' + icon.name).mouseout(function () {
                     icon.changeIcon(icon.name, 'hidden');
                 });
             }
         },
-        changeIcon: function(id, action) {
+        changeIcon: function (id, action) {
             if (action == 'show') {
                 $('#' + id).css('z-index', '99');
                 $('#' + id).css("opacity", "1");
@@ -148,7 +148,7 @@ var gitblog = function(config) {
         }
     }
 
-    var Footer = function() {
+    var Footer = function () {
         this.page = new Pages();
         this.icons = [];
         this.icon_num = 0;
@@ -156,11 +156,11 @@ var gitblog = function(config) {
     }
 
     Footer.prototype = {
-        showIcon: function() {
+        showIcon: function () {
             var footer = this;
             for (var i in config.icons) {
                 if (config.icons[i].icon_src != undefined && config.icons[i].icon_src != null) {
-                    document.getElementById('icon').innerHTML += '<div style="padding-inline-start: 0;margin: 0" id="div_'+i+'"></div>';
+                    document.getElementById('icon').innerHTML += '<div style="padding-inline-start: 0;margin: 0" id="div_' + i + '"></div>';
                 }
             }
             for (var i in config.icons) {
@@ -173,13 +173,13 @@ var gitblog = function(config) {
                 }
             }
         },
-        show: function() {
+        show: function () {
             document.getElementById('footer').innerHTML += this.content;
             this.showIcon();
         }
     }
 
-    var Pages = function() {
+    var Pages = function () {
         this.page = 1;
         this.pages = 1;
         this.itemNum = 0;
@@ -187,7 +187,7 @@ var gitblog = function(config) {
     }
 
     Pages.prototype = {
-        getNum: function(request_url) {
+        getNum: function (request_url) {
             var page = this;
             if (self.options.page != null && self.options.page != undefined) {
                 page.page = self.options.page;
@@ -195,10 +195,10 @@ var gitblog = function(config) {
             $.ajax({
                 type: 'get',
                 url: request_url,
-                success: function(data) {
+                success: function (data) {
                     if (self.options.label != null && self.options.label != undefined) {
                         page.itemNum = data.length;
-                    } else if(self.options.q != null && self.options.q != undefined) {
+                    } else if (self.options.q != null && self.options.q != undefined) {
                         page.itemNum = data.total_count;
                     } else if (self.options.id != null && self.options.id != undefined) {
                         page.itemNum = data.length;
@@ -213,7 +213,7 @@ var gitblog = function(config) {
                 }
             });
         },
-        show: function() {
+        show: function () {
             var page = this;
             $('#pages').css('display', 'inline-block');
             document.getElementById('pages').innerHTML = '<mdui-button><li id="last_page"><a id="last" style="cursor: pointer">«</a></li></mdui-button> ';
@@ -245,19 +245,19 @@ var gitblog = function(config) {
             document.getElementById('pages').innerHTML += ' <mdui-button ><li id="next_page"><a id="next" style="cursor: pointer;">»</a></li></mdui-button>';
             for (var i = 1; i <= page.pages; i++) {
                 if (self.options.label != undefined) {
-                    $('#page' + i).click(function() {
+                    $('#page' + i).click(function () {
                         window.location.href = "?label=" + self.options.label + "&page=" + this.innerHTML;
                     });
                 } else if (self.options.id != undefined) {
-                    $('#page' + i).click(function() {
+                    $('#page' + i).click(function () {
                         window.location.href = "?id=" + self.options.id + "&page=" + this.innerHTML;
                     });
-                } else if(self.options.q != undefined) {
-                    $('#page' + i).click(function() {
+                } else if (self.options.q != undefined) {
+                    $('#page' + i).click(function () {
                         window.location.href = "?q=" + self.options.q + "&page=" + this.innerHTML;
                     });
                 } else {
-                    $('#page' + i).click(function() {
+                    $('#page' + i).click(function () {
                         window.location.href = "?page=" + this.innerHTML;
                     });
                 }
@@ -274,14 +274,14 @@ var gitblog = function(config) {
                 $('#last_page').css('pointer-events', 'auto');
                 $('#next_page').css('pointer-events', 'none');
             }
-            document.getElementById('last').onclick = function() {
+            document.getElementById('last').onclick = function () {
                 page.last();
             }
-            document.getElementById('next').onclick = function() {
+            document.getElementById('next').onclick = function () {
                 page.next();
             }
         },
-        last: function() {
+        last: function () {
             this.page--;
             if (self.options.label != undefined) {
                 window.location.href = '?label=' + self.options.label + '&page=' + this.page;
@@ -291,7 +291,7 @@ var gitblog = function(config) {
                 window.location.href = '?page=' + this.page;
             }
         },
-        next: function() {
+        next: function () {
             this.page++;
             if (self.options.label != undefined) {
                 window.location.href = '?label=' + self.options.label + '&page=' + this.page;
@@ -303,13 +303,13 @@ var gitblog = function(config) {
         }
     }
 
-    var Reaction = function() {
+    var Reaction = function () {
         this.num = 0;
         this.isLike = false;
     }
 
     Reaction.prototype = {
-        like: function(type, id) {
+        like: function (type, id) {
             var reaction = this;
             if (reaction.isLike == true) return;
             if (window.localStorage.access_token == undefined || window.localStorage.access_token == null) {
@@ -332,14 +332,14 @@ var gitblog = function(config) {
                 data: JSON.stringify({
                     "content": "heart"
                 }),
-                success: function() {
+                success: function () {
                     reaction.num += 1;
                     reaction.isLike = true;
                     reaction.show(type, id);
                 }
             });
         },
-        getNum: function(type, id) {
+        getNum: function (type, id) {
             var reaction = this;
             var request_url = '';
             if (type == 'issue') {
@@ -353,7 +353,7 @@ var gitblog = function(config) {
                 headers: {
                     Accept: 'application/vnd.github.squirrel-girl-preview+json'
                 },
-                success: function(data) {
+                success: function (data) {
                     for (var i in data) {
                         if (data[i].user.login == window.localStorage.name) {
                             reaction.isLike = true;
@@ -364,7 +364,7 @@ var gitblog = function(config) {
                 }
             });
         },
-        show: function(type, id) {
+        show: function (type, id) {
             var reaction = this;
             if (reaction.isLike == false) {
                 document.getElementById(id).innerHTML = '<img src="images/heart.svg" style="height:20px;float:left">';
@@ -372,23 +372,23 @@ var gitblog = function(config) {
                 document.getElementById(id).innerHTML = '❤️';
             }
             document.getElementById(id).innerHTML += reaction.num;
-            document.getElementById(id).onclick = function() {
+            document.getElementById(id).onclick = function () {
                 reaction.like(type, id);
             };
         }
     }
 
-    var commentItem = function() {
+    var commentItem = function () {
         this.reaction = new Reaction();
     }
 
-    var Comment = function() {
+    var Comment = function () {
         this.login = false;
         this.item = [];
     }
 
     Comment.prototype = {
-        send: function() {
+        send: function () {
             var comment = this;
             var input = document.getElementById('comment-input').value;
             $.ajax({
@@ -403,7 +403,7 @@ var gitblog = function(config) {
                     "body": input
                 }),
                 dataType: "json",
-                success: function(data) {
+                success: function (data) {
                     if (data.id != undefined) {
                         document.getElementById('comment-input').value = "";
                         comment.addComment(data);
@@ -412,7 +412,7 @@ var gitblog = function(config) {
                 }
             });
         },
-        init: function() {
+        init: function () {
             var comment = this;
             comment.checkIsLogin();
             $.ajax({
@@ -421,7 +421,7 @@ var gitblog = function(config) {
                     Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
                 },
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments?page=' + self.options.page + '&per_page=10',
-                success: function(data) {
+                success: function (data) {
                     document.getElementById('comment-list').innerHTML = "";
                     for (var i in data) {
                         comment.addComment(data[i]);
@@ -436,7 +436,7 @@ var gitblog = function(config) {
                 login.innerHTML = '<a class="gitment-editor-login-link" id="log">登出</a>';
             }
 
-            document.getElementById('log').onclick = function() {
+            document.getElementById('log').onclick = function () {
                 if (comment.login == false) {
                     comment.log();
                 } else {
@@ -453,24 +453,24 @@ var gitblog = function(config) {
                 $('.gitment-editor-submit').attr("disabled", false);
             }
 
-            $('#editComment').click(function() {
+            $('#editComment').click(function () {
                 comment.edit();
             });
-            $('#preview').click(function() {
+            $('#preview').click(function () {
                 comment.preview();
             });
-            $('.gitment-editor-submit').click(function() {
+            $('.gitment-editor-submit').click(function () {
                 comment.send();
             });
         },
-        addComment: function(data) {
+        addComment: function (data) {
             var comment = new commentItem();
             data.created_at = self.utc2localTime(data.created_at);
             document.getElementById('comment-list').innerHTML += '<li class="gitment-comment">' + '<a class="gitment-comment-avatar" href=' + data.user.html_url + ' target="_blank">' + '<img class="gitment-comment-avatar-img" src=' + data.user.avatar_url + '></a>' + '<div class="gitment-comment-main"><div class="gitment-comment-header">' + '<a class="gitment-comment-name" href=' + data.user.html_url + ' target="_blank">' + data.user.login + '</a> 评论于 ' + '<span>' + data.created_at + '</span>' + '<div style="float:right;cursor:pointer" id="' + data.id + '"></div>' + '</div><div class="gitment-comment-body gitment-markdown">' + data.body_html + '</div></div>';
             comment.reaction.getNum('comment', data.id);
             this.item.push(comment);
         },
-        checkIsLogin: function() {
+        checkIsLogin: function () {
             var comment = this;
             if (window.localStorage.access_token != undefined) {
                 this.login = true;
@@ -485,26 +485,26 @@ var gitblog = function(config) {
                         Accept: 'application/vnd.github.squirrel-girl-preview+json'
                     },
                     url: 'https://api.github.com/user',
-                    success: function(data) {
+                    success: function (data) {
                         window.localStorage.setItem('user_avatar_url', data.avatar_url);
                         window.localStorage.setItem('user_url', data.html_url);
                         window.localStorage.setItem('name', data.login);
                         avatar.innerHTML = '<a class="gitment-comment-avatar" href=' + window.localStorage.user_url + ' target="_blank">' + '<img class="gitment-comment-avatar-img" src=' + window.localStorage.user_avatar_url + '></a>';
                         window.localStorage.setItem('authorize', btoa(data.login + ':' + window.localStorage.access_token));
                     },
-                    error: function() {
+                    error: function () {
                         console.log("用户信息过期，退出登录状态");
                         comment.logout();
                     }
                 });
             } else {
                 avatar.innerHTML = '<a class="gitment-editor-avatar" id="gitment-avatar" title="login with GitHub">' + '<img src="images/gitment-github-icon.svg" class="gitment-github-icon" style="width:44px">' + '</a></div>';
-                document.getElementById('gitment-avatar').onclick = function() {
+                document.getElementById('gitment-avatar').onclick = function () {
                     comment.log();
                 }
             }
         },
-        preview: function() {
+        preview: function () {
             $('#editComment').removeClass('gitment-selected');
             $('#preview').addClass('gitment-selected');
             $('.gitment-editor-write-field').addClass('gitment-hidden');
@@ -527,32 +527,32 @@ var gitblog = function(config) {
                         text: comment_input
                     }),
                     dataType: "text/html",
-                    success: function(message) {
+                    success: function (message) {
                         preview_content.innerHTML = message.responseText;
                     },
-                    error: function(message) {
+                    error: function (message) {
                         preview_content.innerHTML = message.responseText;
                     }
                 });
             }
         },
-        edit: function() {
+        edit: function () {
             $('#editComment').addClass('gitment-selected');
             $('#preview').removeClass('gitment-selected');
             $('.gitment-editor-write-field').removeClass('gitment-hidden');
             $('.gitment-editor-preview-field').addClass('gitment-hidden');
         },
-        log: function() {
+        log: function () {
             window.location.href = 'https://github.com/login/oauth/authorize?client_id=' + config.client_id + '&scope=public_repo&state=' + window.location.href;
         },
-        logout: function() {
+        logout: function () {
             this.login = false;
             window.localStorage.clear();
             this.init();
         }
     }
 
-    var Article = function() {
+    var Article = function () {
         this.comments = new Comment();
         this.page = new Pages();
         this.reaction = new Reaction();
@@ -560,7 +560,7 @@ var gitblog = function(config) {
     }
 
     Article.prototype = {
-        init: function() {
+        init: function () {
             var article = this;
             if (self.options.token != undefined && self.options.token != null) {
                 window.localStorage.clear();
@@ -575,7 +575,7 @@ var gitblog = function(config) {
                     Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
                 },
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id,
-                success: function(data) {
+                success: function (data) {
                     document.getElementById('title').innerHTML = data.title;
                     document.getElementsByTagName("title")[0].innerText = data.title + "-" + config.title;
                     data.created_at = self.utc2localTime(data.created_at);
@@ -593,46 +593,46 @@ var gitblog = function(config) {
         }
     }
 
-    var Issue = function() {
+    var Issue = function () {
         this.issue_url = '';
         this.issue_perpage_url = '';
         this.issue_search_url = '';
         this.author = '';
         this.creator = '',
-        this.state = '';
+            this.state = '';
         this.page = new Pages();
     }
 
     Issue.prototype = {
-        getTags: function() {
+        getTags: function () {
             $.ajax({
                 type: 'get',
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/labels',
-                success: function(data) {
+                success: function (data) {
                     for (var i in data) {
                         document.getElementById('tags').innerHTML += '<a href="issue_per_label.html?label=' + data[i].name + '">' + data[i].name + '</a>';
                     }
                 },
             });
         },
-        addItem: function(data) {
+        addItem: function (data) {
             document.getElementById('issue-list').innerHTML = '';
             for (var i in data) {
                 var labels_content = '';
                 for (var j in data[i].labels) {
-                    labels_content +=  '<mdui-chip onclick="#" href=issue_per_label.html?label=' + data[i].labels[j].name + '>' + data[i].labels[j].name + '</mdui-chip>';
+                    labels_content += '<mdui-chip onclick="#" href=issue_per_label.html?label=' + data[i].labels[j].name + '>' + data[i].labels[j].name + '</mdui-chip>';
                 }
                 data[i].body = data[i].body.replace(/<.*?>/g, "");
                 data[i].created_at = self.utc2localTime(data[i].created_at);
                 document.getElementById('issue-list').innerHTML += '<li><p class="date">' + data[i].created_at + '</p><h4 class="title"><a href="content.html?id=' + data[i].number + '">' + data[i].title + '</a></h4><div class="excerpt"><p class="issue">' + data[i].body + '</p></div>' + '<li>' + '</li>' + labels_content + '</ul></li>';
             }
         },
-        show: function(request_url) {
+        show: function (request_url) {
             var issue = this;
             $.ajax({
                 type: 'get',
                 url: request_url + 'page=' + self.options.page + '&per_page=10',
-                success: function(data) {
+                success: function (data) {
                     if (self.options.q == undefined || self.options.q == null) {
                         if (data.length == 0) {
                             document.getElementById('issue-list').innerHTML = '未找到内容，在写了在写了';
@@ -648,7 +648,7 @@ var gitblog = function(config) {
                         }
                         var html = document.getElementById('issue-list').innerHTML;
                         var newHtml;
-                        if(self.options.q != '')
+                        if (self.options.q != '')
                             newHtml = html.replaceAll(self.options.q, '<font style="background-color:yellow;">' + self.options.q + '</font>');
                         else
                             newHtml = html;
@@ -657,15 +657,15 @@ var gitblog = function(config) {
                 }
             });
         },
-        init: function() {
-            if(config.filter.creator != undefined && config.filter.creator != null) {
-                if(config.filter.creator == 'all') {
+        init: function () {
+            if (config.filter.creator != undefined && config.filter.creator != null) {
+                if (config.filter.creator == 'all') {
                     this.author = '';
                     this.creator = '';
                 } else {
-                    var authors= new Array();
+                    var authors = new Array();
                     authors = config.filter.creator.split(",");
-                    for(var i in authors) {
+                    for (var i in authors) {
                         this.author += 'author:' + authors[i] + '+';
                         this.creator += 'creator=' + authors[i] + '&';
                     }
@@ -674,7 +674,7 @@ var gitblog = function(config) {
                 this.author = '';
                 this.creator = '';
             }
-            if(config.filter.state != undefined && config.filter.state != null) {
+            if (config.filter.state != undefined && config.filter.state != null) {
                 this.state = config.filter.state;
             } else {
                 this.state = 'all';
@@ -696,7 +696,7 @@ var gitblog = function(config) {
                         Accept: 'application/vnd.github.symmetra-preview+json',
                     },
                     url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/labels/' + self.options.label,
-                    success: function(data) {
+                    success: function (data) {
                         document.getElementById('instruction').innerHTML = data.description;
                     }
                 });
@@ -705,29 +705,28 @@ var gitblog = function(config) {
             this.show(this.issue_perpage_url);
             this.getTags();
         },
-        search: function(search) {
+        search: function (search) {
             search = encodeURI(search);
             this.issue_url = 'https://api.github.com/search/issues?q=' + search + ' ' + this.author + 'in:title,body+repo:' + config.name + '/' + config.repo + '+state:' + this.state;
             this.issue_perpage_url = 'https://api.github.com/search/issues?q=' + search + ' ' + this.author + 'in:title,body+repo:' + config.name + '/' + config.repo + '+state:' + this.state + '&';
         }
     }
 
-    var Buttons = function() {}
+    var Buttons = function () { }
 
     Buttons.prototype = {
-        getByClass: function(Parent, Class){
-            var result=[];
-            var ele=Parent.getElementsByTagName('*');
-            for(var i=0;i<ele.length;i++){
-                if(ele[i].className==Class)
-                {
+        getByClass: function (Parent, Class) {
+            var result = [];
+            var ele = Parent.getElementsByTagName('*');
+            for (var i = 0; i < ele.length; i++) {
+                if (ele[i].className == Class) {
                     result.push(ele[i]);
                 }
             }
             return result;
         },
-        init: function() {
-            $('.navi-button').click(function() {
+        init: function () {
+            $('.navi-button').click(function () {
                 if ($('.main').css("transform") == "matrix(1, 0, 0, 1, 0, 0)") {
                     $('.main').css("transform", "translateX(-150px)");
                     $('.main-navication span').css("opacity", "1");
@@ -740,8 +739,8 @@ var gitblog = function(config) {
                 }
             });
 
-            this.getByClass(document.getElementsByTagName("body")[0], "main")[0].addEventListener("mousedown",function(){
-                if($('.main').css("transform") != "matrix(1, 0, 0, 1, 0, 0)") {
+            this.getByClass(document.getElementsByTagName("body")[0], "main")[0].addEventListener("mousedown", function () {
+                if ($('.main').css("transform") != "matrix(1, 0, 0, 1, 0, 0)") {
                     $('.main').css("transform", "translateX(0)");
                     $('.main-navication span').css("opacity", "0");
                     $('.main-navication').css("opacity", "0");
@@ -751,29 +750,29 @@ var gitblog = function(config) {
                     $('.search').css("transform", "translateX(0px)");
                     $('.search-input').css("transform", "translateX(0px)");
                 }
-            },false);
+            }, false);
 
-            $('.Totop').click(function() {
+            $('.Totop').click(function () {
                 $('html,body').animate({
                     scrollTop: '0px'
                 },
-                600);
+                    600);
             });
 
-            $('.search').click(function() {
+            $('.search').click(function () {
                 $(".search-input").css('z-index', 99);
                 $(".search-input").css("width", '300px');
                 $(".search-input").focus();
             });
 
             $('.search-input').bind('keypress',
-            function(event) {
-                if (event.keyCode == "13" && $('.search-input').val() != "") {
-                    window.location.href = 'issue_per_label.html?q=' + $('.search-input').val();
-                }
-            })
+                function (event) {
+                    if (event.keyCode == "13" && $('.search-input').val() != "") {
+                        window.location.href = 'issue_per_label.html?q=' + $('.search-input').val();
+                    }
+                })
 
-            window.onscroll = function() {
+            window.onscroll = function () {
                 if ($(document).scrollTop() >= 0.6 * document.documentElement.clientHeight) {
                     $('.Totop').css('opacity', 1);
                 } else {
@@ -783,7 +782,7 @@ var gitblog = function(config) {
         }
     }
 
-    self.init = function() {
+    self.init = function () {
         self.info = new Info();
         self.info.init();
         if (self.options.id != null && self.options.id != undefined) {
@@ -811,7 +810,7 @@ $.ajax({
         Accept: 'application/json',
     },
     url: 'config.json',
-    success: function(data) {
+    success: function (data) {
         new gitblog(data).init();
     }
 });
@@ -898,34 +897,41 @@ class Cursor {
 })();
 
 
-    /* drawer */
-    const navigationDrawer = document.getElementsByTagName("mdui-navigation-drawer")[0];
-    const btn = document.getElementsByTagName("mdui-button-icon")[0];
-    var menu = true;
-    btn.onclick = function () {
-        if (menu) {
-            navigationDrawer.open = true;
-            menu = false;
-        } else {
-            navigationDrawer.open = false;
-            menu = true;
-        }
+/* drawer */
+const navigationDrawer = document.getElementsByTagName("mdui-navigation-drawer")[0];
+const btn = document.getElementsByTagName("mdui-button-icon")[0];
+var menu = true;
+btn.onclick = function () {
+    if (menu) {
+        navigationDrawer.open = true;
+        menu = false;
+    } else {
+        navigationDrawer.open = false;
+        menu = true;
     }
+}
 
-    /* loading */
-    document.onreadystatechange = completeLoading;
-    function completeLoading() {
-        if (document.readyState == "complete") {
-            document.getElementById('loader-wrapper').style.display = "none";
-        }
-        else {
-            document.getElementById('loader-wrapper').style.display = "block";
-        }
+/* loading */
+document.onreadystatechange = completeLoading;
+function completeLoading() {
+    if (document.readyState == "complete") {
+        document.getElementById('loader-wrapper').style.display = "none";
     }
+    else {
+        document.getElementById('loader-wrapper').style.display = "block";
+    }
+}
 
-    const height = window.innerWidth
-    window.onload = function () {
-        if (height > 850) {
-            navigationDrawer.open = true;
-        } 
+const height = window.innerWidth
+window.onload = function () {
+    if (height > 850) {
+        navigationDrawer.open = true;
     }
+}
+
+window.onload = function () {
+    if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+        document.getElementById("body").style.borderBottom = "cursor:default:";
+
+    }
+}
